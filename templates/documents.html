@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TrustVault - My Documents</title>
+</head>
+<body>
+
+    <h1>My Documents</h1>
+
+    {% if documents %}
+
+        <table border="1" cellpadding="10">
+
+            <tr>
+                <th>Document Name</th>
+                <th>Uploaded Date</th>
+                <th>Download</th>
+            </tr>
+
+            {% for document in documents %}
+
+            <tr>
+                <td>{{ document.filename }}</td>
+
+                <td>{{ document.uploaded_at }}</td>
+
+                <td>
+                    <a href="/download/{{ document.id }}">
+                        Download
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+
+        <p>No documents uploaded yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+    <br><br>
+
+    <a href="/upload">Upload New Document</a>
+
+</body>
+</html>
