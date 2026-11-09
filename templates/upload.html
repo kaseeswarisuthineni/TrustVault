@@ -1,17 +1,17 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TrustVault - Upload</title>
+    <title>TrustVault - Upload Document</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-    <h2>Upload Your Document</h2>
+    <h1>TrustVault</h1>
 
-    {% with messages = get_flashed_messages() %}
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
-    {% endwith %}
+    <h2>Upload Document</h2>
 
     <form method="POST" enctype="multipart/form-data">
 
@@ -19,13 +19,19 @@
 
         <br><br>
 
-        <button type="submit">Upload</button>
+        <button type="submit">Upload Document</button>
 
     </form>
 
     <br>
 
-    <a href="/dashboard">Back to Dashboard</a>
+    <a href="/dashboard">
+        <button type="button">Back to Dashboard</button>
+    </a>
+
+    <br><br>
+
+    <a href="/documents">View My Documents</a>
 
 </body>
 </html>

@@ -1,53 +1,52 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>TrustVault - My Documents</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
     <h1>My Documents</h1>
 
     {% if documents %}
 
-        <table border="1" cellpadding="10">
+    <table>
+        <tr>
+            <th>Document Name</th>
+            <th>Uploaded Date</th>
+            <th>Download</th>
+        </tr>
 
-            <tr>
-                <th>Document Name</th>
-                <th>Uploaded Date</th>
-                <th>Download</th>
-            </tr>
+        {% for document in documents %}
+        <tr>
+            <td>{{ document.filename }}</td>
+            <td>{{ document.uploaded_at }}</td>
+            <td>
+                <a href="/download/{{ document.id }}">Download</a>
+            </td>
+        </tr>
+        {% endfor %}
 
-            {% for document in documents %}
-
-            <tr>
-                <td>{{ document.filename }}</td>
-
-                <td>{{ document.uploaded_at }}</td>
-
-                <td>
-                    <a href="/download/{{ document.id }}">
-                        Download
-                    </a>
-                </td>
-            </tr>
-
-            {% endfor %}
-
-        </table>
+    </table>
 
     {% else %}
 
-        <p>No documents uploaded yet.</p>
+    <p>No documents uploaded yet.</p>
 
     {% endif %}
 
     <br>
 
-    <a href="/dashboard">Back to Dashboard</a>
+    <a href="/dashboard">
+        <button>Back to Dashboard</button>
+    </a>
 
-    <br><br>
-
-    <a href="/upload">Upload New Document</a>
+    <a href="/upload">
+        <button>Upload New Document</button>
+    </a>
 
 </body>
 </html>
